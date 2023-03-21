@@ -2,7 +2,7 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
-function options()
+local function options()
     local opt = vim.opt -- to set options
     opt.expandtab = true -- Use spaces instead of tabs
     opt.shiftwidth = 2 -- Size of an indent
@@ -71,4 +71,5 @@ function options()
       eob = ' ',
     }
 end
-return options()
+options()
+return

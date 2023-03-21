@@ -1,5 +1,5 @@
 -- system_open = function(state) require("astronvim.utils").system_open(state.tree:get_node():get_id()) end,
-function parent_or_close(state)
+local function parent_or_close(state)
   local node = state.tree:get_node()
   if (node.type == "directory" or node:has_children()) and node:is_expanded() then
     state.commands.toggle_node(state)
@@ -8,7 +8,7 @@ function parent_or_close(state)
   end
 end
 
-function child_or_open(state)
+local function child_or_open(state)
   local node = state.tree:get_node()
   if node.type == "directory" or node:has_children() then
     if not node:is_expanded() then -- if unexpanded, expand
@@ -21,7 +21,7 @@ function child_or_open(state)
   end
 end
 
-function copy_selector(state)
+local function copy_selector(state)
   local node = state.tree:get_node()
   local filepath = node:get_id()
   local filename = node.name

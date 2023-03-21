@@ -32,6 +32,7 @@ require("lazy").setup({
   spec = {{ import = "specs" }},
   lockfile = paths.lazy_lockfile,
   concurrency = nil,
+  ---@diagnostic disable-next-line: assign-type-mismatch
   dev = {
     path = paths.dev_plugins,
     fallback = false,

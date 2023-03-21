@@ -11,8 +11,4 @@ vim.api.nvim_create_autocmd(
   }
 )
 
-function hl_name()
-  vim.notify("highligh: " .. require('treesitter').statusline(90))
-end
-
 require('lazy')
