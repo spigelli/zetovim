@@ -7,7 +7,7 @@ return {
   tag = "v2.1.0",
   event = "VimEnter",
   dependencies = {
-    { import = "plugins.ui.dressing" },
+    { import = "specs.ui.dressing" },
   },
   opts = {
     keymaps = {

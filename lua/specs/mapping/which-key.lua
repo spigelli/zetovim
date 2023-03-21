@@ -3,7 +3,7 @@ return {
   event="BufEnter",
   lazy=true,
   dependencies = {
-    { import = "plugins.mapping.legendary" },
+    { import = "specs.mapping.legendary" },
   },
   opts = {
     plugins = {
@@ -92,7 +92,7 @@ return {
   },
   config = function(_, opts)
     local wk = require("which-key")
-    local legendary_opts = require("plugins.mapping.legendary").opts
+    local legendary_opts = require("specs.mapping.legendary").opts
     wk.setup(opts)
     --- @diagnostic disable-next-line: different-requires
     require("legendary").setup(opts)

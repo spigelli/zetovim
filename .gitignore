@@ -1,2 +1,3 @@
-/lua/plugins/.lazy/
+.lazy
 .vscode/
+lua/plugins/github-nvim-theme

@@ -1,9 +1,9 @@
 vim.o.guifont = "Symbols Nerd Font Mono,SF Mono:h12"
 local config_path  = vim.fn.stdpath("config")
 local paths = {
-  lazy_installation = vim.fn.stdpath("data") .. "/lazy.nvim",
-  lazy_plugins = config_path .. "/lua/plugins/.lazy",
-  lazy_lockfile = config_path .. "/lua/plugins/.lazy/lockfile.json",
+  lazy_installation = config_path .. "/.lazy/lazy.nvim",
+  lazy_plugins = config_path .. "/.lazy",
+  lazy_lockfile = config_path .. "/.lazy/lockfile.json",
   dev_plugins = config_path .. "/lua/plugins",
   plugins_specs = config_path .. "/lua/specs",
 }
@@ -22,7 +22,6 @@ end
 vim.opt.rtp:prepend(vim.env.LAZY or paths.lazy_installation)
 
 require("config.autocmds")
-
 require("lazy").setup({
   root = paths.lazy_plugins,
   defaults = {
