@@ -212,9 +212,94 @@ function run_neovim() {
   return $?
 }
 
-run_neovim "$@"
+function run_kitty() {
+  local kitty_dir
+  kitty_dir="$(which kitty)"
+  if [[ $? -ne 0 ]]; then
+    echo "Could not find kitty"
+    return 1
+  fi
+  local nvim_appname
+  nvim_appname="$(basename "$(get_source_dir)")"
+  if [[ $? -ne 0 ]]; then
+    echo "Could not get the source directory"
+    return 1
+  fi
+  # Run kitty with the configuration in this directory
+  # --directory should be set to the directory that the
+  # user was in when they ran this script
+  "$kitty_dir" \
+    --config "$(get_source_dir)/kitty.conf" \
+    --directory "$(pwd)" \
+    --class "$nvim_appname" \
+    --title "$nvim_appname" \
+    --hold \
+    sh -c "NEOVIM_RUNNER=1 $(get_source_dir)/$nvim_appname && run_neovim $*"
+  return $?
+}
 
-# Paths:
-# cache: ~/.cache/neodev-nvim
-# config: ~/.config/neodev-nvim
-# data: ~/.local/share/neodev-nvim
+#######################################
+# Prints the help message
+# Globals: None
+# Arguments: None
+# Outputs: The help message
+# Returns: None
+#######################################
+function print_help() {
+  echo "Usage: $0 [OPTION]..."
+  echo "Run neovim with the configuration in this directory"
+  echo ""
+  echo "Options:"
+  echo "  -h, --help    Print this help message"
+  echo "  -v, --version Print the version"
+}
+
+function print_version() {
+  echo "$0 version $VERSION"
+}
+
+#######################################
+# Parses the command line arguments
+#   -h, --help - Prints the help message
+#   -v, --version - Prints the version
+# Globals: None
+# Arguments:
+#   $@ - The arguments to parse
+# Outputs: None
+# Returns:
+#  0 if the arguments were parsed successfully
+#  1 if the arguments were not parsed successfully
+#######################################
+function parse_args() {
+  local args=()
+  local nvim=false
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      -h|--help)
+        print_help
+        exit 0
+        ;;
+      -v|--version)
+        print_version
+        exit 0
+        ;;
+    esac
+    shift
+  done
+  return 0
+}
+
+function main() {
+  # If the script is run with NEOVIM_RUNNER set to 1,
+  # then run neovim
+  if [[ "$NEOVIM_RUNNER" == "1" ]]; then
+    run_neovim "$@"
+    return $?
+  else 
+    parse_args "$@"
+    run_kitty "$@"
+    return $?
+  fi
+}
+
+main "$@"
