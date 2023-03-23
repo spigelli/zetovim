@@ -15,8 +15,8 @@ return {
       { '<D-w>', ':bd<CR>',                 description = 'Close Active Buffer'   },
       { '<D-P>', ':Legendary<CR>',          description = 'Toggle Legendary'      },
       { '<D-K>', ':Legendary<CR>',          description = 'Toggle Legendary'      },
-      { '<D-{>', ':BufferPrevious<CR>',     description = 'Cycle Previous Buffer' },
-      { '<D-}>', ':BufferNext<CR>',         description = 'Cycle Next Buffer'     },
+      -- { '<D-{>', ':BufferPrevious<CR>',     description = 'Cycle Previous Buffer' },
+      -- { '<D-}>', ':BufferNext<CR>',         description = 'Cycle Next Buffer'     },
       { '<D-[>', ':BufferMovePrevious<CR>', description = 'Move Buffer Left'      },
       { '<D-]>', ':BufferMoveNext<CR>',     description = 'Move Buffer Right'     },
       { '<C-h>', ':wincmd h<CR>',           description = 'Move to Left Window',   mode = { 'n', 't' } },
@@ -45,5 +45,36 @@ return {
         ]],
       },
     },
+    augroups = {
+      {
+        'NumberToggle',
+        clear=true,
+        {
+          function()
+            if vim.o.nu and vim.api.nvim_get_mode().mode ~= "i" then
+              vim.opt.relativenumber = true
+            end
+          end,
+          { "BufEnter", "FocusGained", "InsertLeave", "CmdlineLeave", "WinEnter" },
+          description="Turn on relative numbers when entering a buffer",
+          opts = {
+            pattern="*"
+          },
+        },
+        {
+          function()
+            if vim.o.nu then
+              vim.opt.relativenumber = false
+              vim.cmd "redraw"
+            end
+          end,
+          { "BufLeave", "FocusLost", "InsertEnter", "CmdlineEnter", "WinLeave" },
+          description="Turn off relative numbers when leaving a buffer",
+          opts = {
+            pattern="*"
+          },
+        },
+      },
+    }
   },
 }

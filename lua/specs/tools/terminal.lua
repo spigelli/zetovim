@@ -6,6 +6,13 @@ return {
     -- dev = true,
     opts = {
       open_mapping = '<D-t>',
+      on_open = function(term)
+        pcall(function()
+          require('virt-column').setup_buffer({
+            virtcolumn = '',
+          })
+        end)
+      end,
       shade_filetypes = { 'none' },
       direction = 'horizontal',
       autochdir = true,
