@@ -47,7 +47,8 @@ return {
     -- disable winbar on certain filetypes
     disabled_filetypes = {
       'neo-tree',
-      'toggleterm'
+      'toggleterm',
+      'Trouble',
     },
     -- disable winbar on certain buftypes
     disabled_buftypes = {},

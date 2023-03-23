@@ -15,8 +15,8 @@ return {
       { '<D-w>', ':bd<CR>',                 description = 'Close Active Buffer'   },
       { '<D-P>', ':Legendary<CR>',          description = 'Toggle Legendary'      },
       { '<D-K>', ':Legendary<CR>',          description = 'Toggle Legendary'      },
-      -- { '<D-{>', ':BufferPrevious<CR>',     description = 'Cycle Previous Buffer' },
-      -- { '<D-}>', ':BufferNext<CR>',         description = 'Cycle Next Buffer'     },
+      { '<D-{>', ':BufferPrevious<CR>',     description = 'Cycle Previous Buffer' },
+      { '<D-}>', ':BufferNext<CR>',         description = 'Cycle Next Buffer'     },
       { '<D-[>', ':BufferMovePrevious<CR>', description = 'Move Buffer Left'      },
       { '<D-]>', ':BufferMoveNext<CR>',     description = 'Move Buffer Right'     },
       { '<C-h>', ':wincmd h<CR>',           description = 'Move to Left Window',   mode = { 'n', 't' } },
@@ -46,6 +46,19 @@ return {
       },
     },
     augroups = {
+      -- {
+      --   "Hover",
+      --   {
+      --     function()
+      --       vim.lsp.buf.hover()
+      --     end,
+      --     { "CursorHold" },
+      --     description="Hover",
+      --     opts = {
+      --       pattern="*"
+      --     },
+      --   },
+      -- },
       {
         'NumberToggle',
         clear=true,
@@ -78,3 +91,5 @@ return {
     }
   },
 }
+
+-- Bind CursorHold to hover

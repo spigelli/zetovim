@@ -74,10 +74,15 @@ return {
 
     local servers = opts.servers
     local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+    local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 
     local function setup(server)
       local server_opts = vim.tbl_deep_extend("force", {
         capabilities = vim.deepcopy(capabilities),
+        handlers = {
+          ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border, focusable = false }),
+          ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border, focusable = false }),
+        },
       }, servers[server] or {})
 
       if opts.setup[server] then
@@ -112,5 +117,22 @@ return {
       mlsp.setup({ ensure_installed = ensure_installed })
       mlsp.setup_handlers({ setup })
     end
+    vim.api.nvim_create_autocmd(
+      "CursorHold",
+      {
+        pattern = {"*"},
+        callback = function()
+          vim.lsp.buf.hover()
+          -- if not require("cmp").visible() then
+          --   local hover_fixed = function()
+          --     vim.api.nvim_command("set eventignore=CursorHold")
+          --     vim.api.nvim_command("autocmd CursorMoved ++once set eventignore=\" \" ")
+          --     vim.lsp.buf.hover()
+          --   end
+          --   hover_fixed()
+          -- end
+        end
+      }
+    )
   end,
 }

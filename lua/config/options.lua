@@ -47,7 +47,7 @@ local function options()
     opt.spelllang = { "en" }
     opt.undofile = true
     opt.undolevels = 10000
-    opt.updatetime = 200 -- Save swap file and trigger CursorHold
+    opt.updatetime = 700 -- Save swap file and trigger CursorHold
     opt.wildmode = "longest:full,full" -- Command-line completion mode
     opt.winminwidth = 5 -- Minimum window width
     opt.cmdheight = 0 -- Height of the command bar
