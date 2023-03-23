@@ -35,7 +35,7 @@ require("lazy").setup({
   ---@diagnostic disable-next-line: assign-type-mismatch
   dev = {
     path = paths.dev_plugins,
-    patterns = { "projekt0n/github-nvim-theme" },
+    patterns = { "projekt0n/github-nvim-theme", "mrjones2014/legendary.nvim" },
     fallback = false,
   },
   install = {

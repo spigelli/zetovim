@@ -44,4 +44,11 @@
     ".lazy",
   ],
   "Lua.workspace.checkThirdParty": true,
+  "Lua.diagnostics.disable": [
+    "duplicate-doc-field",
+    "duplicate-doc-alias",
+    "duplicate-set-field"
+  ],
+  "Lua.hover.previewFields": 10,
+  "Lua.workspace.maxPreload": 1000,
 }

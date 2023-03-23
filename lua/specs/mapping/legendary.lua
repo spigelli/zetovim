@@ -1,15 +1,18 @@
 -- This plugin is actually loaded as a dependency to
 -- which key
 -- local mappings = require("config.mappings")
-
 return {
   "mrjones2014/legendary.nvim",
-  tag = "v2.1.0",
   event = "VimEnter",
+  branch="master",
+  dev = true,
   dependencies = {
     { import = "specs.ui.dressing" },
   },
   opts = {
+    extensions = {
+      nvim_tree = true,
+    },
     keymaps = {
       { '<D-e>', ':ToggleFileBrowser<CR>',  description = 'Toggle File Browser'   },
       { '<D-w>', ':bd<CR>',                 description = 'Close Active Buffer'   },
@@ -31,7 +34,7 @@ return {
     commands = {
       {
         ':ToggleFileBrowser',
-        require('config.commands').toggle_neo_tree,
+        require('config.commands').toggle_nvim_tree,
         description = [[
           Toggle the file browser or focus it if it is
           already open and in another window
@@ -90,6 +93,10 @@ return {
       },
     }
   },
+  ---@param opts LegendaryConfig
+  config = function(_, opts)
+    require('legendary').setup(opts)
+  end,
 }
 
 -- Bind CursorHold to hover

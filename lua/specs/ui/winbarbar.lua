@@ -49,6 +49,7 @@ return {
       'neo-tree',
       'toggleterm',
       'Trouble',
+      'NvimTree'
     },
     -- disable winbar on certain buftypes
     disabled_buftypes = {},
