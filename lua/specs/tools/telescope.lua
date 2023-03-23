@@ -8,8 +8,16 @@ return {
     opts = function()
       return {
         defaults = {
-          vimgrep_arguments = {"rg", "-L", "--color=never", "--no-heading", "--with-filename", "--line-number",
-          "--column", "--smart-case"},
+          vimgrep_arguments = {
+            "rg",
+            "-L",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+          },
           prompt_prefix = "   ",
           selection_caret = "  ",
           entry_prefix = "  ",
@@ -50,7 +58,7 @@ return {
             n = {
               ["q"] = require("telescope.actions").close
             }
-          }
+          },
         },
       }
     end,
@@ -60,9 +68,9 @@ return {
       telescope.setup(opts)
       
       -- load extensions
-      for _, ext in ipairs(opts.extensions_list) do
-        telescope.load_extension(ext)
-      end
+      -- for _, ext in ipairs(opts.extensions_list) do
+      --   telescope.load_extension(ext)
+      -- end
     end
   }
 }
