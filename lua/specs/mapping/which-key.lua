@@ -2,6 +2,9 @@ return {
   "folke/which-key.nvim",
   event="BufEnter",
   lazy=true,
+  cond = function()
+    return false
+  end,
   dependencies = {
     { import = "specs.mapping.legendary" },
   },

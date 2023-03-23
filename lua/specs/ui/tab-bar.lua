@@ -21,6 +21,9 @@ return {
         desc = "Delete non-pinned buffers"
     }},
     lazy = false,
+    cond = function()
+        return false
+    end,
     priority = 100000,
     opts = function() 
         local hi = require('util.colors').theme()
