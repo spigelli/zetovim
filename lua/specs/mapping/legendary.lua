@@ -11,9 +11,9 @@ return {
     { 'famiu/bufdelete.nvim' }
   },
   opts = {
-    extensions = {
-      nvim_tree = true,
-    },
+    -- extensions = {
+    --   nvim_tree = true,
+    -- },
     keymaps = {
       { '<D-e>', ':ToggleFileBrowser<CR>',  description = 'Toggle File Browser'   },
       { '<D-w>', ':Bdelete<CR>',                 description = 'Close Active Buffer'   },

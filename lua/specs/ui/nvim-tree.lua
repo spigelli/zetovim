@@ -6,6 +6,9 @@ return {
     dependencies = {
       "kyazdani42/nvim-web-devicons"
     },
+    cond = function()
+      return false
+    end,
     opts = function()
       return {
         filters = {
