@@ -73,17 +73,22 @@ return {
     vim.diagnostic.config(opts.diagnostics)
 
     local servers = opts.servers
-    local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+    local capabilities = require("cmp_nvim_lsp")
+      .default_capabilities(
+        vim.lsp.protocol.make_client_capabilities()
+      )
+
+    print(vim.inspect(capabilities))
     local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 
     local function setup(server)
-      local server_opts = vim.tbl_deep_extend("force", {
-        capabilities = vim.deepcopy(capabilities),
-        handlers = {
-          ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border, focusable = false }),
-          ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border, focusable = false }),
+      local server_opts = vim.tbl_deep_extend(
+        "force",
+        {
+          capabilities = vim.deepcopy(capabilities),
         },
-      }, servers[server] or {})
+        servers[server] or {}
+      )
 
       if opts.setup[server] then
         if opts.setup[server](server, server_opts) then

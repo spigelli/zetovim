@@ -31,7 +31,6 @@
     ".lazy/?.nvim/lua/?/init.lua",
     "?.lua",
     "?/init.lua",
-    
   ],
   "Lua.workspace.ignoreDir": [
     ".lazy", 
@@ -42,6 +41,7 @@
   "Lua.workspace.library": [
     "types",
     ".lazy",
+    "/home/spigelli/nvim/share/nvim/runtime/lua",
   ],
   "Lua.workspace.checkThirdParty": true,
   "Lua.diagnostics.disable": [
@@ -50,5 +50,4 @@
     "duplicate-set-field"
   ],
   "Lua.hover.previewFields": 10,
-  "Lua.workspace.maxPreload": 1000,
 }

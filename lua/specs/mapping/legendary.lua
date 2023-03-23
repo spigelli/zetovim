@@ -8,6 +8,7 @@ return {
   dev = true,
   dependencies = {
     { import = "specs.ui.dressing" },
+    { 'famiu/bufdelete.nvim' }
   },
   opts = {
     extensions = {
@@ -15,7 +16,7 @@ return {
     },
     keymaps = {
       { '<D-e>', ':ToggleFileBrowser<CR>',  description = 'Toggle File Browser'   },
-      { '<D-w>', ':bd<CR>',                 description = 'Close Active Buffer'   },
+      { '<D-w>', ':Bdelete<CR>',                 description = 'Close Active Buffer'   },
       { '<D-P>', ':Legendary<CR>',          description = 'Toggle Legendary'      },
       { '<D-K>', ':Legendary<CR>',          description = 'Toggle Legendary'      },
       { '<D-{>', ':BufferPrevious<CR>',     description = 'Cycle Previous Buffer' },
