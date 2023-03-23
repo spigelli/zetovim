@@ -234,7 +234,7 @@ function run_kitty() {
     --class "$nvim_appname" \
     --title "$nvim_appname" \
     --hold \
-    sh -c "NEOVIM_RUNNER=1 $(get_source_dir)/$nvim_appname && run_neovim $*"
+    sh -c "NEOVIM_RUNNER=1 $(get_source_dir)/$nvim_appname $*"
   return $?
 }
 
@@ -250,7 +250,7 @@ function print_help() {
   echo "Run neovim with the configuration in this directory"
   echo ""
   echo "Options:"
-  echo "  -h, --help    Print this help message"
+  echo "  --help    Print this help message"
   echo "  -v, --version Print the version"
 }
 
@@ -275,7 +275,7 @@ function parse_args() {
   local nvim=false
   while [[ $# -gt 0 ]]; do
     case "$1" in
-      -h|--help)
+      --help)
         print_help
         exit 0
         ;;
