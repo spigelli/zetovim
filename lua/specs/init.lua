@@ -11,6 +11,7 @@ return {
   { import = "specs.tools.telescope" },
   { import = "specs.ui.dressing" },
   { import = "specs.ui.tab-bar" },
+  { import = "specs.ui.virt-column" },
   { import = "specs.tools.terminal" },
   { import = "specs.ui.statusline" },
   { import = "specs.lsp.nvim-lspconfig" },
