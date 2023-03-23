@@ -52,7 +52,6 @@ return {
                   }
               }
           },
-          extensions_list = {}
       }
     end,
 
