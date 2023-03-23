@@ -57,7 +57,12 @@ end
 
 return {
   'nvim-neo-tree/neo-tree.nvim',
-  dependencies = { "MunifTanjim/nui.nvim" },
+  branch = "v2.x",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "MunifTanjim/nui.nvim",
+    "nvim-tree/nvim-web-devicons",
+  },
   opts = function()
     return {
       -- If a user has a sources list it will replace this one.
