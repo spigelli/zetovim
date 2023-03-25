@@ -1,5 +1,6 @@
 return {
   'mrjones2014/winbarbar.nvim',
+  enabled = false,
   opts = {
     -- Enable/disable auto-hiding the tab bar when there is a single buffer
     auto_hide = false,
